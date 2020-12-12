@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0px;padding: 0px;
+			}
+			.box{
+				margin:100px auto;
+				background-color: aqua;
+				width: 500px;
+				height: 500px;
+			}
+			input{
+				margin-left: 100px;
+				margin-top: 200px;
+				width: 300px;
+				height: 100px;
+				font-size: 30px;
+				text-align: center;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="box">
+			
+			<input />
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	let date = new Date(324000000).getTime();
+	setInterval(bao,1000)
+	function bao(){
+	let tata = new Date(date);
+	let hour = tata.getHours();
+	let minu = tata.getMinutes();
+	let secon = tata.getSeconds();
+	let sz=document.querySelector("input")
+	sz.value=hour + ":" + minu + ":" + secon;
+	date=date-1000;
+	}
+</script>

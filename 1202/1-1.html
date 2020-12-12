@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<select class="shen"></select>
+		<select class="shi"></select>
+		<select class="qu"></select>
+	</body>
+</html>
+<script type="text/javascript" src="citys.js"></script>
+<script type="text/javascript">
+	let shen=document.querySelector(".shen");
+	let shi=document.querySelector(".shi");
+	let qu=document.querySelector(".qu");
+	for(let i=0;i<data.length;i++){
+		let tjin=data[i].name;
+		shen.innerHTML+=`<option>${tjin}</option>`;
+		let haha=shen.value;
+		console.log(haha)
+	}
+	let haha=shen.value;
+	console.log(haha)
+	/* for(let i=0;i<data.length;i++){
+		if(shen.value)
+	} */
+</script>

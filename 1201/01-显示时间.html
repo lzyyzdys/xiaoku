@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	// let date = new Date();
+	
+	// 指定一个固定的时间
+	let date = new Date(3600*1000+3600*1000*24+3600*1000*24*365);			
+	document.write(date);
+	
+	// 如何获取年份呢
+	let year = date.getFullYear();
+	//如何获取月份呢
+	let month = date.getMonth()+1;
+	//如何获取天数呢
+	let day = date.getDate();
+	
+	document.write("<p>" + year + "年" + month + "月" + day + "号" + "</p>");
+	
+	let hour = date.getHours();		//小时
+	let minu = date.getMinutes();	//分钟
+	let secon = date.getSeconds();	//秒钟
+	
+	document.write("<p>" + hour + ":" + minu + ":" + secon + "</p>");
+	
+	document.write("30天之前:"+new Date(new Date()-30*24*3600*1000))
+	
+	document.write("<p></p>")
+	document.write(new Date().getTime())
+</script>

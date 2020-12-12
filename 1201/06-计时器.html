@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="start">开始</button>
+		<input value="1"/>
+		<button id="end">停止</button>
+	</body>
+</html>
+<script>
+	let s = document.querySelector("#start");
+	let e = document.querySelector("#end");
+	let i = document.querySelector("input");
+	let m = null;
+	
+	s.onclick=function(){
+		// setInterval("i.value = parseInt(i.value) + 1",1000)
+		/* if(!m){
+			m = setInterval(b,1000)
+		} */
+
+		console.log(m);
+		if(m == null){
+			m = setInterval(b,1000)
+		} 	
+	}
+	
+	function b (){
+		i.value = parseInt(i.value) + 1
+	}
+	
+	e.onclick=function(){
+		clearInterval(m);
+		m = null;
+		i.value = 0
+	}
+</script>
+

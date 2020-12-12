@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 1500px;
+			}
+			button{
+				position: fixed;left: 1000px;top: 500px;
+				width: 100px;height: 40px;
+				
+			}
+		/* 	position: fixed; */
+		/* d定位 */
+		</style>
+	</head>
+	<body >
+		<button onclick="pkpk()">点击到最顶部</button>
+	</body>
+</html>
+<script>
+	let haha=document.querySelector("body");
+	let jd=document.createElement("input");
+	let i=0;
+	haha.onscroll=function(){
+		console.log(document.documentElement.scrollTop);
+		let jkjk=document.documentElement.scrollTop;
+		if(jkjk>500){
+			console.log(jd)
+			jd.style.width="500px";
+			jd.style.height="70px";
+			jd.style.border="3px solid #dd001b";
+			jd.style.position="fixed";
+			jd.style.top="0px";
+			jd.style.left="500px";
+			jd.placeholder="搜索框";
+			i=0;
+			haha.appendChild(jd);
+		}else
+		if(jkjk<500&i==0){
+			haha.removeChild(jd);
+			i=i+1;
+		}
+	}
+	function pkpk(){
+		document.documentElement.scrollTop="0px";
+		 
+	}
+</script>

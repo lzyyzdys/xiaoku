@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<select onchange="handleChange(this)" class="province">
+			
+		</select>
+		
+		<select class="city">
+			
+		</select>
+		
+		<select class="area">
+			<option>番禺区</option>
+		</select>
+	</body>
+</html>
+<script src="./citys.js"></script>
+<script>
+	let oPro = document.querySelector(".province");
+	let oCity = document.querySelector(".city");
+	let oArea = document.querySelector(".area");
+	
+	initProvice();
+	
+	function initProvice(){
+		//放了所有的省
+		for(let i=0;i<data.length ;i++ ){
+			oPro.innerHTML += `<option>${data[i].name}</option>`
+		}
+		//放第一个省的第一个市
+		oCity.innerHTML = `<option>${data[0].city[0].name}<option>`
+		
+		oArea.innerHTML = `<option>${data[0].city[0].area[0]}<option>`
+		
+		
+	}
+	
+	function handleChange(t){
+		//获取到当前是哪个省，再获取这个省对应的所有的市，再获取第一个市的第一个区
+		let nowPro = t.value;		//当前省
+		
+		for(let i=0;i<data.length ;i++ ){
+			if(nowPro == data[i].name){
+				let nowCitys = data[i].city;
+				oCity.innerHTML = '';
+				for(let k=0;k<nowCitys.length;k++){
+					let nowC = nowCitys[k];
+					oCity.innerHTML += `<option>${nowC.name}</option>`
+				}
+				
+				// 第一个市的第一个区
+				oArea.innerHTML = `<option>${nowCitys[0].area[0]}</option>`
+				
+			}
+		}
+		
+	}
+	
+	
+</script>
+

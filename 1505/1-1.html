@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{
+				background-color: #F2F2F2;
+			}
+			.box-wrapper{
+				width:90%;
+				height:1000px;
+				margin:100px auto;
+				display:flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+			}
+			.item{
+				width:30%;
+				height:300px;
+				margin-bottom:30px;
+				background-color: #fff;
+				position:relative;
+			}
+			.item .aixin{
+				position:absolute;
+				right:35px;bottom:125px;
+				color:#fff;
+				background:url(爱心.png) no-repeat 5px 3px;
+				padding-left:30px;	
+			}
+			a{
+				text-decoration:none;
+			}
+			h3{
+				padding-left:5px;margin:10px 0;
+			}
+			.addr{
+				padding:3px;height:20px;border:1px solid #ccc;border-radius:5px;margin-left:10px;color:#4c4c4c;font-size:12px;display:inline;background:url(位置.png) no-repeat 5px 4px;padding-left:20px;background-size: 14px;
+			}
+			li{list-style:none;}
+			.item div{
+				display:flex;
+				margin-top:10px;
+				color:#4c4c4c;
+				font-size:14px;
+			}
+			.item div li{
+				flex:1;
+			}
+			.item div li:first-child{
+				margin-left:10px;
+				background:url(时间.png) no-repeat;padding-left:20px;;
+			}
+			.item div li:last-child{
+				text-align: right;
+			}
+			.item div li:last-child span{
+				color:#55b8bd;
+				font-size:18px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box-wrapper"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	let haha=document.querySelector(".box-wrapper");
+	let data=null;
+	let wdang = new XMLHttpRequest();
+	wdang.open("POST","http://www.51houniao.com/requirement/request/getMatchedProducts");
+	wdang.setRequestHeader("Content-type","application/json;charset=utf-8");
+	wdang.send('{"orderBy": "OUT_TIME", "desc": "false", "pageNow": "1", "pageSize": "100", "product_type": "2"}');
+	wdang.onreadystatechange=function(){
+
+		if(wdang.readyState == 4 && wdang.status == 200){
+			data = JSON.parse(wdang.responseText).matchedProducts;
+			console.log(data);
+			
+			for(let i=0;i<data.length;i++){
+				let jkjk=data[i];
+				haha.innerHTML +=`
+					<div class="item">
+						<img src="${jkjk.proPicUrl}" width="100%" >
+						<p class="aixin">${jkjk.collectionNum}</p>
+						<h3>${jkjk.proTitle}</h3>
+						<a href="#">
+							<p class="addr">${jkjk.country}</p>
+						</a>
+						<div>
+							<li>${jkjk.routingDat}天${jkjk.routingNigth}晚</li>
+							<li><span>${jkjk.amount}</span>元起</li>
+						</div>
+					</div>
+				`
+			}
+		}
+	}
+</script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+			<p style="text-align: center;background-color: #7FFFD4;" onclick="getData()">点我显示表格数据</p>
+			<table border="1" align="center" width="300px">
+				<tr>
+					<td>名字</td>
+					<td>电话</td>
+					<td>地址</td>
+				</tr>
+				<!-- <tr>
+					<td>二蛋</td>
+					<td>110</td>
+					<td>蛋壳公寓</td>
+				</tr> -->
+			</table>
+			<a href="http://www.51houniao.com/requirement/destination/getPoiList">我要一堆数据</a>
+			<form action="http://www.baidu.com" method="post">
+				<p>
+					<input type="text" name="username" id="" value="用户名" />
+				</p>
+				<p>
+					<input type="text" name="password" id="" value="密码" />
+				</p>
+				<p>
+					<input type="submit" value="登录">
+				</p>
+			</form>
+	</body>
+</html>
+<script>
+	function getData(){
+		//1.创建一个小弟弟
+		let xhr = new XMLHttpRequest();
+		//2.设置小弟弟的属性  
+		/*
+			请求方式：
+				get：
+					参数会直接显示在地址后面
+					参数有大小限制，好像是2M
+				post
+					参数不会显示在地址栏后面
+					对中文支持的比较好(主要指后台)
+					理论上参数大小无限制(上传必备post方式)
+				put
+					会覆盖第一个
+			请求路径:
+				url:
+		*/
+		xhr.open("GET","data.json");
+		//3.干活儿去
+		xhr.send();
+		//4.创建监听
+		xhr.onreadystatechange=function(){
+			//有两种状态
+			/*
+				一种是准备状态(readyState)
+					 0 － （未初始化）还没有调用send()方法
+					 1 － （载入）已调用send()方法，正在发送请求
+					 2 － （载入完成）send()方法执行完成，已经接收到全部响应内容
+					 3 － （交互）正在解析响应内容
+					 4 － （完成）响应内容解析完成，可以在客户端调用了				******
+				另一种是响应状态(服务器给我们返回的状态，200表示正常的，404-页面找不到,304-请使用缓存)
+			*/
+			if(xhr.readyState==4 && xhr.status == 200){
+				
+				//获取结果---结果类型为文本类型
+				let txt = xhr.responseText;
+				// let ev = eval(`(${txt})`)		//调用eval函数，将字符串类型转换成json类型,看起来很恶心
+				
+				let ev = JSON.parse(txt);
+				
+				for(let i=0;i<ev.length;i++){
+				let e = ev[i];
+				document.querySelector("tbody").innerHTML+=`
+				<tr>
+					<td>${e.name}</td>
+					<td>${e.tel}</td>
+					<td>${e.addr}</td>
+				</tr>
+				`
+				}
+			}
+		}
+	}
+</script>

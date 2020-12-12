@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 怀润的日期+38*7(266) = 预产期 -->
+		<p>自动计算预产期</p>
+		<p>请录入你的生日：<input type="date" onChange="daima(this)"/></p>
+		<p>你离死亡时间还有：<input class="yc" /></p>
+	</body>
+</html>
+<script>
+	function daima(t){
+		let z = t.value;
+		let sj = new Date(z).getTime();
+		let taxs=new Date().getTime();
+		let bain=new Date(z).getTime()+100.06849315*365*24*3600*1000;
+		let huo=bain-taxs;
+		let ry=huo/1000/3600/24;
+		let yc = document.querySelector(".yc");
+		yc.value =parseInt(ry)+"天";
+	}
+</script>

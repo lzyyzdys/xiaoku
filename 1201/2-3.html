@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 怀润的日期+38*7(266) = 预产期 -->
+		<p>自动计算预产期</p>
+		<p>请录入时间：<input type="date" onChange="daima(this)"/></p>
+		<p>预产期为：<input class="yc" /></p>
+		<p>预产期已经过去：<input class="sg" /></p>
+	</body>
+</html>
+<script>
+	function daima(t){
+		let z = t.value;
+		let po = new Date(z).getTime()+266*24*3600*1000;
+		let you = new Date(po);
+		let git = getDate(you);
+		let yc = document.querySelector(".yc");
+		let sg = document.querySelector(".sg");
+		yc.value = git;
+		let hoew=new Date().getTime();
+		let hr=hoew-po;
+		let zho=hr/1000/3600/24;
+		let jkjk=parseInt(zho/7);
+		let yy=parseInt(zho%7);
+		console.log(hr);
+		sg.value=jkjk+"周"+yy+"天";
+		
+	}
+	//当别人选好了日期
+	//获取他的日期
+	//然后+266天
+	//然后将结果写到预产期的input里面去
+	
+	
+	function getDate(date){
+		let year = date.getFullYear();
+		//如何获取月份呢
+		let month = date.getMonth()+1;
+		//如何获取天数呢
+		let day = date.getDate();
+		return year+"-"+month+"-"+day;
+	}
+</script>

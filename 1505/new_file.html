@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+		</title>
+		<style>
+			*{
+				margin: 0px;padding: 0px;
+			}
+			body{
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	let x=0;
+	let y=0;
+	document.onmousedown=function(e){
+		x=e.offsetX;
+		y=e.offsetY;
+		console.log(x,y)
+		document.onmouseup=function(ev){
+			let po=document.createElement("div");
+			po.style.border="1px solid #000000";
+			po.style.position="absolute";
+			po.style.left=x+"px";
+			po.style.top=y+"px";
+			po.style.width=ev.offsetX-x +"px";
+			po.style.height=ev.offsetY-y +"px";
+			document.body.appendChild(po);
+			setTimeout(bao,1000);   //3秒钟之后执行下面那个包的代码
+			function bao(){
+				/* po.style.top=600+"px"; */
+				po.style.transition="3s";
+				po.style.transform="translateY(600+'px')";
+				po.style.top=600+"px";
+			}
+		}
+		
+	}
+</script>

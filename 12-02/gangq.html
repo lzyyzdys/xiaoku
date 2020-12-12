@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0px;padding: 0px;
+			}
+			.box{
+				width: 400px;height:300px;
+				position: relative;
+				overflow: hidden;
+			}
+			.box div{
+				width: 50px;height:300px;
+				background-colors:#eeeeee;
+				/* background-image: linear-gradient(#cbcbcb, #9198e5); */
+				border:1px solid #000000;
+				box-sizing: border-box;
+				float: left;
+			}
+			.box2{
+				width:250px;height: 170px;
+				position: absolute;left:40px;top:0px;
+				overflow: hidden;
+			}
+			.box2 div{
+				width:20px;height: 170px;
+				background-color:#000000;
+				margin-right:30px;
+				float: left;
+			}
+			#haha{
+				background-color: crimson;
+				z-index: 10px;
+			}
+			#hj{
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="box2">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<audio ></audio>
+	</body>
+</html>
+<script type="text/javascript" src="shuz.js"></script>
+<script type="text/javascript">
+	let baij=document.querySelectorAll(".box div");
+	let hi=document.querySelectorAll(".box2 div");
+	let yy=document.querySelector("audio");
+	console.log(baij)
+	for(let i=0;i<baij.length;i++){
+		baij[i].onmousedown=function(){
+			baij[i].setAttribute("id","haha");
+			yy.src=sound[i];
+			yy.play();
+		}
+		baij[i].onmouseup=function(){
+			for(let n=0;n<baij.length;n++){
+					baij[n].removeAttribute("id","haha");
+				}
+		}
+	}
+	for(let i=0;i<hi.length;i++){
+		hi[i].onmousedown=function(){
+			hi[i].setAttribute("id","hj");
+			yy.src=sound[i];
+			yy.play();
+		}
+		hi[i].onmouseup=function(){
+			for(let n=0;n<hi.length;n++){
+					hi[n].removeAttribute("id","hj");
+				}
+		}
+	}
+	
+	/* function jkjk(){
+		for(let n=0;n<baij.length;n++){
+				baij[n].removeAttribute("id","haha");
+			}
+	} */
+	/* function jk(){
+		for(let n=0;n<hi.length;n++){
+				hi[n].removeAttribute("id","hj");
+			}
+	} */
+	
+</script>
